@@ -15,7 +15,7 @@ export default function App() {
       //先验证表格名称是否都存在
       const sjglTable = await bitable.base.getTableByName(Config.TAB_NAME_SJGL);
       if (!sjglTable) {
-        return uiBuilder.markdown(`检测不到\`${Config.TAB_NAME_SJGL}\`表`);
+        return console.warn(`检测不到\`${Config.TAB_NAME_SJGL}\`表`);
       }
       const offSel = bitable.base.onSelectionChange((event) => {
         // offSel(); // 取消监听所选数据表变化
@@ -31,7 +31,8 @@ export default function App() {
       //先验证表格名称是否都存在
       const tjzbTable = await bitable.base.getTableByName(Config.TAB_NAME_TJZB);
       if (!tjzbTable) {
-        return uiBuilder.markdown(`检测不到\`${Config.TAB_NAME_TJZB}\`表`);
+        throw new Error(`检测不到\`${Config.TAB_NAME_TJZB}\`表`);
+        return console.warn(`检测不到\`${Config.TAB_NAME_TJZB}\`表`);
       }
       const offAdd = tjzbTable.onRecordAdd((event) => { // 监听字段增加事件。
         // offAdd();

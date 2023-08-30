@@ -47,6 +47,10 @@ export default async function main(uiBuilder: UIBuilder) {
     return uiBuilder.text("没有选中任何商机");
   }
   //检测当前选中是否在商机管理表
+  if (selection.tableId==null)
+  {
+    return uiBuilder.text("没有选中任何表格");
+  }
   const selectionTable = await bitable.base.getTableById(selection.tableId);
   const selectionTableName = await selectionTable.getName();
   if (selectionTableName != Config.TAB_NAME_SJGL) {
